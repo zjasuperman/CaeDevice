@@ -1,12 +1,12 @@
 package com.cd.cardevice;
 
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
 /**
  * @Author: ZhuangJie
  * @Date: 2019/3/20 13:47
@@ -14,8 +14,10 @@ import android.widget.ImageView;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private boolean isPlay;
     private ImageView mIvPlay;
+    private static final int PLAY_STATE = 1;
+    private static final int PAUSE_STATE = 0;
+    private int music_state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mIvPlay = findViewById(R.id.iv_play);
         mIvPlay.setOnClickListener(this);
 
+        mIvPlay.getDrawable().setLevel(music_state == PLAY_STATE ? PLAY_STATE : PAUSE_STATE);
 
     }
 
@@ -49,18 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iv_play:
-                if (!isPlay){
-                    //播放
-                    mIvPlay.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.mipmap.more_click));
-                }else {
-                    //暂停
-                    mIvPlay.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.mipmap.pause));
-                }
-                isPlay = !isPlay;
-
+        switch (music_state){
+            case PLAY_STATE:
+                music_state = PAUSE_STATE;
+                break;
+            case PAUSE_STATE:
+                music_state = PLAY_STATE;
                 break;
         }
+        mIvPlay.getDrawable().setLevel(music_state);
     }
 }

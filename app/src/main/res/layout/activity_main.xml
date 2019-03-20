@@ -420,7 +420,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toTopOf="@+id/imageView14"
         app:layout_constraintVertical_bias="0.87"
-        app:srcCompat="@mipmap/pause" />
+        app:srcCompat="@drawable/play_state" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -449,7 +449,9 @@
         app:layout_constraintStart_toStartOf="@+id/imageView12"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.87"
-        app:srcCompat="@mipmap/search" />
+        app:srcCompat="@drawable/selector_radio"
+        android:clickable="true"
+        />
 
     <ImageView
         android:id="@+id/imageView21"
